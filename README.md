@@ -14,7 +14,7 @@ The model is introduced in the below paper:
 
 
 ## Inputs and outputs
-We have a network with _N_ nodes and and we have _T_ observations from each node. 
+We have a network with _N_ nodes and we have _T_ observations from each node. 
 Observations are denoted by matrix **Y** (with size _N_ by _T_) and the times of observations 
 are denoted by vector **t** (vector with size _T_). The aim of **LATNET** is to find (i) which 
 nodes are connected
@@ -76,7 +76,7 @@ is to recover which suburbs are connected to each other in terms of their median
 downloaded from [http://www.housing.nsw.gov.au](http://www.housing.nsw.gov.au).
 
 * _gene_reg.py_. Given the activity of each gene, the aim of this experiment is to find which
-genes influence each other. The data contains activity of 800 genes. Please refer to the paper 
+genes influence each other. The data contains the activity of 800 genes. Please refer to the paper 
 for the source of the data.
 
 * _gene_reg_full.py_. Given the activity of each gene, the aim of this experiment is to find which
