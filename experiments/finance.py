@@ -25,6 +25,12 @@ class Finance:
         data = pandas.read_csv(Paths.DATA + 'finance/Returns-2003-2009+Comments.csv', header=0, index_col=0)
 
         data = np.array(data).T
+
+
+        mean_ = np.mean(data, axis=0)
+        std_ = np.std(data, axis=0)
+        data = (data - mean_) / std_
+
         t = [np.array(range(0, data.shape[0]))[:, np.newaxis]]
         Logger.logger.debug('size of Y is: %s' % str(data.shape))
 

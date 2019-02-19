@@ -485,7 +485,7 @@ class Latnet:
         """
 
         # not to use GPUs for optimization because of memory problem.
-        config = tf.ConfigProto(device_count={'GPU': 0})
+        config = tf.ConfigProto()
 
         with tf.Session(config=config) as sess:
 
