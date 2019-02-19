@@ -42,18 +42,18 @@ class Finance:
         alpha_, \
         lengthscale, variance = Latnet.optimize(norm_t, data,
                                       ['var', 'hyp'],
-                                      5,
-                                      {'var': 500, 'hyp': 10000},
+                                      1,
+                                      {'var': 100},
                                       Logger.logger,
-                                      init_sigma2_n=0.06,
-                                      init_sigma2_g=1e-4,
-                                      init_lengthscle=2.,
-                                      init_variance=0.6,
+                                      init_sigma2_n=9.024860053509282665e-01,
+                                      init_sigma2_g=3.791168899534822531e-04,
+                                      init_lengthscle=5.608573826565368611e-03,
+                                      init_variance=8.005787326950046523e-02,
                                       lambda_prior=0.5,
                                       lambda_postetior=2. / 3.,
                                       var_lr=0.01,
                                       hyp_lr=0.0001,
-                                      n_samples=10
+                                      n_samples=50
                                       )
 
         end_time = time.time()
