@@ -41,9 +41,9 @@ class Finance:
         mu, sigma2_, \
         alpha_, \
         lengthscale, variance = Latnet.optimize(norm_t, data,
-                                      ['var'],
+                                      ['var', 'hyp'],
                                       1,
-                                      {'var': 100},
+                                      {'var': 100, 'hyp': 100},
                                       Logger.logger,
                                       init_sigma2_n=9.024860053509282665e-01,
                                       init_sigma2_g=3.791168899534822531e-04,
