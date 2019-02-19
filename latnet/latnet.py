@@ -502,7 +502,7 @@ class Latnet:
                                                                                  )
 
         # not to use GPUs for optimization because of memory problem.
-        config = tf.ConfigProto()
+        config = tf.ConfigProto(log_device_placement=True)
 
         with tf.Session(config=config) as sess:
 
