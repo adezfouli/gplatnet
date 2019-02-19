@@ -484,12 +484,7 @@ class Latnet:
             variance: double. Optimized variance of variance of RBF kernel.
         """
 
-        # not to use GPUs for optimization because of memory problem.
-        config = tf.ConfigProto()
-
-        with tf.Session(config=config) as sess:
-
-            # with tf.Session() as sess:
+        with tf.device('/device:GPU:0'):
             var_opt, hyp_opt, \
             elbo, \
             kl_normal, \
@@ -505,6 +500,13 @@ class Latnet:
                                                                                  seed=seed,
                                                                                  fixed_kernel=fix_kernel
                                                                                  )
+
+        # not to use GPUs for optimization because of memory problem.
+        config = tf.ConfigProto()
+
+        with tf.Session(config=config) as sess:
+
+            # with tf.Session() as sess:
 
             init_op = tf.initialize_all_variables()
             sess.run(init_op)
