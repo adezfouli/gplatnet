@@ -484,7 +484,7 @@ class Latnet:
             variance: double. Optimized variance of variance of RBF kernel.
         """
 
-        with tf.device('/device:GPU:0'):
+        with tf.device('/device:CPU:0'):
             var_opt, hyp_opt, \
             elbo, \
             kl_normal, \
