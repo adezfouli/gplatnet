@@ -1,8 +1,8 @@
 import csv
 import pandas
 import time
+from experiments.expr_util import ExprUtil
 from experiments.paths import Paths
-from expr_util import ExprUtil
 from latnet.latnet import Latnet
 from latnet.expr_logger import Logger
 from latnet.util import check_dir_exists

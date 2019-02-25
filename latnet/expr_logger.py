@@ -1,7 +1,6 @@
 import logging
 
 from util import get_git
-from StringIO import StringIO as StringBuffer
 
 
 class Logger:
