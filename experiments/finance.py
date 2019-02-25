@@ -1,4 +1,7 @@
 import csv
+import sys
+from multiprocessing.pool import Pool
+
 import pandas
 import time
 from experiments.expr_util import ExprUtil
@@ -16,7 +19,6 @@ class Finance:
 
     @staticmethod
     def finance(output_folder, index_time=None):
-
 
         path = Paths.RESULTS + output_folder
         check_dir_exists(path)
@@ -71,7 +73,27 @@ class Finance:
             l.close()
 
 
+all_confgs = []
+for i in range(0, 23):
+    all_confgs.append(range(i * 26, min((i + 2) * 26, 618)))
+
+
+def run_fin(index_i):
+    output_folder = '/finance_' + str(index_i) + '/'
+    Finance.finance(output_folder, all_confgs[index_i])
+
+
 if __name__ == '__main__':
-    for i in range(0, 23):
-        output_folder = '/finance/'
-        Finance.finance(output_folder, range(i * 26, min((i + 2) * 26, 618)))
+
+    if len(sys.argv) == 2:
+        n_proc = int(sys.argv[1])
+    elif len(sys.argv) == 1:
+        n_proc = 1
+    else:
+        raise Exception('invalid argument')
+
+    p = Pool(n_proc)
+    p.map(run_fin, range(len(all_confgs)))
+    p.close()  # no more tasks
+    p.join()  # wrap up current tasks
+
