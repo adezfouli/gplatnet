@@ -1,6 +1,6 @@
 import logging
 
-from util import get_git
+from latnet.util import get_git
 
 
 class Logger:
