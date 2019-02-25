@@ -52,7 +52,7 @@ class Finance:
                                       Logger.logger,
                                       init_sigma2_n=9.024860053509282665e-04,
                                       init_sigma2_g=3.791168899534822531e-04,
-                                      init_lengthscle=5.608573826565368611e-03,
+                                      init_lengthscle=5.608573826565368611e-02,
                                       init_variance=8.005787326950046523e-02,
                                       lambda_prior=0.5,
                                       lambda_postetior=2. / 3.,
