@@ -484,25 +484,24 @@ class Latnet:
             variance: double. Optimized variance of variance of RBF kernel.
         """
 
-        with tf.device('/device:CPU:0'):
-            var_opt, hyp_opt, \
-            elbo, \
-            kl_normal, \
-            kl_logstic, \
-            ell, \
-            log_sigma2_n, log_sigma2_g, mu, log_sigma2, log_alpha, \
-            log_lengthscale, log_variance, var_nans, hyp_nans = Latnet.run_model(tf.cast(t, Latnet.FLOAT), Y,
-                                                                                 init_sigma2_g, init_sigma2_n,
-                                                                                 init_lengthscle, init_variance,
-                                                                                 lambda_prior, lambda_postetior,
-                                                                                 var_lr, hyp_lr,
-                                                                                 n_samples,
-                                                                                 seed=seed,
-                                                                                 fixed_kernel=fix_kernel
-                                                                                 )
+        var_opt, hyp_opt, \
+        elbo, \
+        kl_normal, \
+        kl_logstic, \
+        ell, \
+        log_sigma2_n, log_sigma2_g, mu, log_sigma2, log_alpha, \
+        log_lengthscale, log_variance, var_nans, hyp_nans = Latnet.run_model(tf.cast(t, Latnet.FLOAT), Y,
+                                                                             init_sigma2_g, init_sigma2_n,
+                                                                             init_lengthscle, init_variance,
+                                                                             lambda_prior, lambda_postetior,
+                                                                             var_lr, hyp_lr,
+                                                                             n_samples,
+                                                                             seed=seed,
+                                                                             fixed_kernel=fix_kernel
+                                                                             )
 
         # not to use GPUs for optimization because of memory problem.
-        config = tf.ConfigProto(log_device_placement=True)
+        config = tf.ConfigProto(config = tf.ConfigProto(device_count={'GPU': 0}))
 
         with tf.Session(config=config) as sess:
 
