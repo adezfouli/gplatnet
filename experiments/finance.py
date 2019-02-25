@@ -15,9 +15,9 @@ class Finance:
     """
 
     @staticmethod
-    def finance():
+    def finance(output_folder, index_time=None):
 
-        output_folder  = '/finance/'
+
         path = Paths.RESULTS + output_folder
         check_dir_exists(path)
         Logger.init_logger(path, "run", logger_name=output_folder)
@@ -31,8 +31,11 @@ class Finance:
         std_ = np.std(data, axis=0)
         data = (data - mean_) / std_
 
+        if index_time is not None:
+            data = data[index_time, :]
+
         t = [np.array(range(0, data.shape[0]))[:, np.newaxis]]
-        Logger.logger.debug('size of Y is: %s' % str(data.shape))
+        Logger.logger.debug('size of Y is: %s for index time: %s' % (str(data.shape), str(index_time)))
 
         start_time = time.time()
         norm_t = (t[0] - np.mean(t[0])) / np.double(np.std(t[0]))
@@ -69,4 +72,6 @@ class Finance:
 
 
 if __name__ == '__main__':
-    Finance.finance()
+    for i in range(0, 23):
+        output_folder = '/finance/'
+        Finance.finance(output_folder, range(i * 26, min((i + 2) * 26, 618)))
