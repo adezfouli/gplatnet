@@ -56,7 +56,7 @@ class Finance:
                                       lambda_postetior=2. / 3.,
                                       var_lr=0.01,
                                       hyp_lr=0.0001,
-                                      n_samples=50,
+                                      n_samples=20,
                                       log_every=1
                                       )
 
